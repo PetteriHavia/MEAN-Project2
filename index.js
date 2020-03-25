@@ -14,21 +14,27 @@ app.set('view engine' , 'ejs');
 
 
 //ROUTES
+
+//INDEX.GET
 app.get('/', function (req, res) {
   res.render('pages/index', {
     new_paragraph: "Designed by VectorArt"
   });
 });
 
-//Place json data into a variable and pass it to ejs-template
-var jsonData = require('./views/pages/json_guestbook_data.json');
+
+
+
 
 app.get('/guestbook', function (req, res) {
+  //Place json data into a variable and pass it to guestbook.ejs-template
+  var jsonData = require('./views/pages/json_guestbook_data.json');
   res.render('pages/guestbook', {jsonData});
   
-  });
+});
 
 
+//NEWMESSAGE.GET
 app.get('/newmessage', function (req, res) {
   res.render('pages/newmessage', {
     new_header: "/NEWMESSAGE PAGE"
@@ -36,6 +42,7 @@ app.get('/newmessage', function (req, res) {
 });
 
 
+//NEWMESSAGE.POST
 app.post('/newmessage', function (req, res) {
   
   fs.readFile('./views/pages/json_guestbook_data.json', 'utf-8', function(err, data) {
@@ -59,7 +66,6 @@ app.post('/newmessage', function (req, res) {
       console.log("Data saved");
     });
     res.send("Saved data to file json_guestbook_data.json type /guestbook to have a look");
-
   })
 });
 
@@ -74,16 +80,3 @@ app.get('/ajaxmessage', function (req, res) {
 app.listen(PORT);
 //app.listen(8081);
 console.log('8081 is the magic port');
-
-/*
-//create a server object:
-http
-  .createServer(function(request, response) {
-    response.writeHead(200, { "Content-Type": "text/plain" });
-    response.write("Hello World!\n"); //write a response to the client
-    response.write("<a href='index'>To Index Page<a/><br>");
-    response.end("This is the end"); //end the response
-  })
-  
-  .listen(PORT); //the server object listens on port 8080
-*/
