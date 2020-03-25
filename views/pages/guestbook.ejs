@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Newmessage</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+       
+    
+        <style>
+            .container{
+                width:50%;
+            }
+
+        
+
+            .table td, th{
+                border:1px solid lightgray;
+            }
+
+            h1,h3{
+                font-family: Verdana, Geneva, sans-serif;
+                text-align: center;
+                margin-top: 20px;
+                margin-bottom: 20px;
+                
+            }
+
+            input[type=text], textarea{
+                padding: 10px;
+                width: 330px;
+                resize: none;
+            }
+
+            input[type=submit]{
+                padding:5px 15px; 
+                border-radius: 5px;
+                margin: 0 auto;
+            }
+            .navbar{
+                text-align: center;
+                margin-bottom: 20px;
+                margin-top: 20px;
+            }
+
+            .navbar, a{
+             padding: 0px 15px 0px 15px;
+            }
+
+            .navbar{
+                margin: auto;
+                text-align: center;
+                margin-top: 10px;
+            }
+
+            hr{
+            border: 0.5px solid lightgray;
+            }
+
+        </style>
+
+    </head>
+
+    <body>
+
+        <div class="navbar">
+            <h4>Back To</h4>
+              <a href="/">/Home</a>
+              <a href="/newmessage">/Newmessage</a>
+              <a href="/guestbook">/Guestbook</a>
+              <a href="/ajaxmessage">/Ajaxmessage</a>
+              <hr>
+            </div>
+
+        <h1></h1>
+        <div class="container">
+            <table class="table table-striped">
+                <tr>
+                    <th scope="col">NAME</th>
+                    <th scope="col">COUNTRY</th>
+                    <th scope="col">MESSAGE</th>
+                    <th scope="col">DATE</th>
+                  </tr>
+                <% for (var i = 0; i < jsonData.length; i++){ %>
+                    <tr>
+                        <td><%= jsonData[i].username %></td>
+                        <td><%= jsonData[i].country %></td>
+                        <td><%= jsonData[i].message %></td>
+                        <td><%= jsonData[i].date %></td>
+                    </tr>                  
+              <% } %>
+            </table>
+        </div>
+
+    
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </body>
+
+
+</html>
